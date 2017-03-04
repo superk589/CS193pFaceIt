@@ -12,20 +12,20 @@ import UIKit
 class FaceView: UIView {
 
     @IBInspectable
-    var scale: CGFloat = 0.9
+    var scale: CGFloat = 0.9 { didSet { setNeedsDisplay() } }
     
     @IBInspectable
-    var eyesOpen: Bool = false
+    var eyesOpen: Bool = false { didSet { setNeedsDisplay() } }
     
     /// 1.0 is full smile and -1.0 is full frown
     @IBInspectable
-    var mouthCurvature: Double = 1.0
+    var mouthCurvature: Double = 1.0 { didSet { setNeedsDisplay() } }
     
     @IBInspectable
-    var lineWidth: CGFloat = 5
+    var lineWidth: CGFloat = 5 { didSet { setNeedsDisplay() } }
     
     @IBInspectable
-    var color: UIColor = UIColor.blue
+    var color: UIColor = UIColor.blue { didSet { setNeedsDisplay() } }
     
     private enum Eye {
         case left, right
@@ -37,6 +37,16 @@ class FaceView: UIView {
     
     var skullRadius: CGFloat {
         return min(bounds.size.width, bounds.size.height) / 2 * scale
+    }
+    
+    func changeScale(byReactingTo pinchRecognizer: UIPinchGestureRecognizer) {
+        switch pinchRecognizer.state {
+        case .changed, .ended:
+            scale *= pinchRecognizer.scale
+            pinchRecognizer.scale = 1
+        default:
+            break
+        }
     }
     
     private func pathForEye(_ eye: Eye) -> UIBezierPath {
