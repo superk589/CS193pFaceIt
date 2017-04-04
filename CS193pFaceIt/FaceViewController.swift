@@ -15,8 +15,8 @@ class FaceViewController: VCLLoggingViewController {
             let handler = #selector(FaceView.changeScale(byReactingTo:))
             let pinchRecognizer = UIPinchGestureRecognizer.init(target: faceView, action: handler)
             faceView.addGestureRecognizer(pinchRecognizer)
-            let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(toggleEyes(byReactingTo:)))
-            faceView.addGestureRecognizer(tapRecognizer)
+//            let tapRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(toggleEyes(byReactingTo:)))
+//            faceView.addGestureRecognizer(tapRecognizer)
             let swipeUpRecogniezr = UISwipeGestureRecognizer.init(target: self, action: #selector(increaseHappiness))
             swipeUpRecogniezr.direction = .down
             faceView.addGestureRecognizer(swipeUpRecogniezr)
@@ -32,7 +32,6 @@ class FaceViewController: VCLLoggingViewController {
             updateUI()
         }
     }
-    
     
     private func updateUI() {
         switch expression.eyes {
@@ -53,6 +52,38 @@ class FaceViewController: VCLLoggingViewController {
         }
     }
     
+
+    @IBAction func shakeHead(_ sender: UITapGestureRecognizer) {
+        shakeHead()
+    }
+    
+    private struct HeadShake {
+        static let angle = CGFloat.pi / 6
+        static let segmentDuration: TimeInterval = 0.5
+    }
+    
+    private func rotateFace(by angle: CGFloat) {
+        faceView.transform = faceView.transform.rotated(by: angle)
+    }
+    
+    private func shakeHead() {
+        UIView.animate(withDuration: HeadShake.segmentDuration, animations: { 
+            self.rotateFace(by: HeadShake.angle)
+        }) { (finished) in
+            if finished {
+                UIView.animate(withDuration: HeadShake.segmentDuration, animations: { 
+                    self.rotateFace(by: -HeadShake.angle * 2)
+                }, completion: { (finished) in
+                    if finished {
+                        UIView.animate(withDuration: HeadShake.segmentDuration, animations: {
+                            self.rotateFace(by: HeadShake.angle)
+                        })
+                    }
+                })
+            }
+        }
+    }
+    
     func increaseHappiness() {
         expression = expression.happier
     }
@@ -69,7 +100,6 @@ class FaceViewController: VCLLoggingViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
 }
 

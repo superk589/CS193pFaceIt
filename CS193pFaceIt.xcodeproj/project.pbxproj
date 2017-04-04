@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		120659E51E6D285C00936C49 /* VCLLoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120659E41E6D285C00936C49 /* VCLLoggingViewController.swift */; };
+		125A5E881E9399A100CF32A6 /* BlinkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125A5E871E9399A100CF32A6 /* BlinkingViewController.swift */; };
+		125A5E8A1E93A14600CF32A6 /* EyeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 125A5E891E93A14600CF32A6 /* EyeView.swift */; };
 		127F34791E67B08C008BDB1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127F34781E67B08C008BDB1C /* AppDelegate.swift */; };
 		127F347E1E67B08C008BDB1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 127F347C1E67B08C008BDB1C /* Main.storyboard */; };
 		127F34801E67B08C008BDB1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 127F347F1E67B08C008BDB1C /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 
 /* Begin PBXFileReference section */
 		120659E41E6D285C00936C49 /* VCLLoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCLLoggingViewController.swift; sourceTree = "<group>"; };
+		125A5E871E9399A100CF32A6 /* BlinkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlinkingViewController.swift; sourceTree = "<group>"; };
+		125A5E891E93A14600CF32A6 /* EyeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EyeView.swift; sourceTree = "<group>"; };
 		127F34751E67B08C008BDB1C /* CS193pFaceIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CS193pFaceIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		127F34781E67B08C008BDB1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		127F347D1E67B08C008BDB1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,8 +69,10 @@
 				128F4D6D1E6AE15500A1E4A3 /* FaceViewController.swift */,
 				128F4D6F1E6AE17100A1E4A3 /* EmotionsViewController.swift */,
 				127F348B1E67B0F9008BDB1C /* FaceView.swift */,
+				125A5E871E9399A100CF32A6 /* BlinkingViewController.swift */,
 				120659E41E6D285C00936C49 /* VCLLoggingViewController.swift */,
 				127F348D1E6943DA008BDB1C /* FacialExpression.swift */,
+				125A5E891E93A14600CF32A6 /* EyeView.swift */,
 				127F347C1E67B08C008BDB1C /* Main.storyboard */,
 				127F348A1E67B0A1008BDB1C /* Supporting Files */,
 			);
@@ -162,6 +168,8 @@
 				128F4D6E1E6AE15500A1E4A3 /* FaceViewController.swift in Sources */,
 				128F4D701E6AE17100A1E4A3 /* EmotionsViewController.swift in Sources */,
 				127F34791E67B08C008BDB1C /* AppDelegate.swift in Sources */,
+				125A5E881E9399A100CF32A6 /* BlinkingViewController.swift in Sources */,
+				125A5E8A1E93A14600CF32A6 /* EyeView.swift in Sources */,
 				127F348C1E67B0F9008BDB1C /* FaceView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
