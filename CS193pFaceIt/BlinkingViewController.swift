@@ -21,25 +21,37 @@ class BlinkingViewController: FaceViewController {
         static let openDuration: TimeInterval = 2.5
     }
     
+    private var canBlink = false
+    
+    private var inABlink = false
+    
     private func blinkingIfNeeded() {
-        if blinking {
+        if blinking && canBlink && !inABlink {
             faceView.eyesOpen = false
+            inABlink = true
             Timer.scheduledTimer(withTimeInterval: BlinkRate.closedDuration, repeats: false, block: { [weak self] (timer) in
                 self?.faceView.eyesOpen = true
                 Timer.scheduledTimer(withTimeInterval: BlinkRate.openDuration, repeats: false, block: { (timer) in
+                    self?.inABlink = false
                     self?.blinkingIfNeeded()
                 })
             })
         }
     }
     
+    override func updateUI() {
+        super.updateUI()
+        blinking = expression.eyes == .squinting
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        blinking = true
+        canBlink = true
+        blinkingIfNeeded()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        blinking = false
+        canBlink = false
     }
 }
